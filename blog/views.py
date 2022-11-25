@@ -22,7 +22,17 @@ def get_post(request, name_post: str):
             'movie_name': "Матрица"
         }
         return render(request, f'blog/{name_post}.html', context=data)
+    elif "guinnessworldrecords" in name_post:
+        context = {
+            'power_man': 'Narve Laeret',
+            'bar_name': 'Bob’s BBQ & Grill',
+            'count_needle': 1790,
+        }
+        return render(request, f'blog/{name_post}.html', context=context)
     return HttpResponse(f'<h1>Информация о посте {name_post}</h1>')
+
+
+
 
 
 def get_number_post(request, number_post: int):
