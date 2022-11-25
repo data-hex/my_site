@@ -13,7 +13,6 @@ def posts(request):
     return render(request, 'blog/list_detail.html')
 
 
-
 def get_post(request, name_post: str):
     if "kianu" in name_post:
         data = {
@@ -29,11 +28,14 @@ def get_post(request, name_post: str):
             'count_needle': 1790,
         }
         return render(request, f'blog/{name_post}.html', context=context)
-    return HttpResponse(f'<h1>Информация о посте {name_post}</h1>')
-
-
-
+    data_post = {
+        'name': name_post
+    }
+    return render(request, 'blog/detail_by_name.html', context=data_post)
 
 
 def get_number_post(request, number_post: int):
-    return HttpResponse(f'Здесь содержится информация о посте под номером {number_post}')
+    data_post = {
+        'number': number_post
+    }
+    return render(request, 'blog/detail_by_number.html', context=data_post)
